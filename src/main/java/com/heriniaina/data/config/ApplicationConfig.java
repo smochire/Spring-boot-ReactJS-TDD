@@ -19,10 +19,6 @@ public class ApplicationConfig {
 
     private final UserDetailsService userDetailsService;
 
-    @Bean
-    public UserDetailsService getUserDetailsService() {
-        return userDetailsService;
-    }
 
     @Bean
     public PasswordEncoder getPasswordEncoder() {
@@ -31,7 +27,7 @@ public class ApplicationConfig {
 
     @Bean
     public AuthenticationProvider getAuthenticationProvider() {
-        return authenticationProviderService.getAuthenticationProvider(getUserDetailsService(), getPasswordEncoder());
+        return authenticationProviderService.getAuthenticationProvider(userDetailsService, getPasswordEncoder());
     }
 
     @Bean
